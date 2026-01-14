@@ -58,7 +58,7 @@ p6_1password_account_signin() {
   local account="${1:-$OP_ACCOUNT}"
 
   # OP_SESSION_KEY
-  eval `op signin --account "$account"`
+  eval "$(op signin --account "$account")"
 
   p6_env_export OP_ACCOUNT "$account"
 
