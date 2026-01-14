@@ -113,6 +113,54 @@ p6_1password_cli_item_get_password() {
 ######################################################################
 #<
 #
+# Function: str key = p6_1password_cli_item_get_api_key(item_id, [vault_name=$OP_VAULT_NAME])
+#
+#  Args:
+#	item_id -
+#	OPTIONAL vault_name - [$OP_VAULT_NAME]
+#
+#  Returns:
+#	str - key
+#
+#  Environment:	 OP_VAULT_NAME
+#>
+######################################################################
+p6_1password_cli_item_get_api_key() {
+  local item_id="$1"
+  local vault_name="${2:-$OP_VAULT_NAME}"
+
+  local key=$(op item get "$item_id" --vault "$vault_name" --field credential --reveal)
+
+  p6_return_str "$key"
+}
+
+######################################################################
+#<
+#
+# Function: str code = p6_1password_cli_item_get_code(item_id, [vault_name=$OP_VAULT_NAME])
+#
+#  Args:
+#	item_id -
+#	OPTIONAL vault_name - [$OP_VAULT_NAME]
+#
+#  Returns:
+#	str - code
+#
+#  Environment:	 OP_VAULT_NAME
+#>
+######################################################################
+p6_1password_cli_item_get_code() {
+  local item_id="$1"
+  local vault_name="${2:-$OP_VAULT_NAME}"
+
+  local code=$(op item get "$item_id" --vault "$vault_name" --field notesPlain --format json | jq -r '.value')
+
+  p6_return_str "$code"
+}
+
+######################################################################
+#<
+#
 # Function: stream  = p6_1password_cli_item_create(title, username, password, url, [vault_name=$OP_VAULT_NAME])
 #
 #  Args:

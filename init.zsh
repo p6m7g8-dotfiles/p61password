@@ -15,6 +15,26 @@ p6df::modules::p61password::deps() {
 ######################################################################
 #<
 #
+# Function: p6df::modules::p61password::init(_module, dir)
+#
+#  Args:
+#	_module -
+#	dir -
+#
+#>
+######################################################################
+p6df::modules::p61password::init() {
+  local _module="$1"
+  local dir="$2"
+
+  p6_bootstrap "$dir"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
 # Function: p6_1password_account_add(address, email)
 #
 #  Args:

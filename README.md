@@ -31,6 +31,7 @@
 - p6_1password_vault_select(vault_name)
 - p6_1password_whoami()
 - p6df::modules::p61password::deps()
+- p6df::modules::p61password::init(_module, dir)
 - str email = p6_1password_whoami_email()
 
 ## p61password/lib
@@ -39,6 +40,8 @@
 
 - p6_1password_cli_item_archive(item_id, [vault_name=$OP_VAULT_NAME])
 - p6_1password_cli_item_delete(item_id, [vault_name=$OP_VAULT_NAME])
+- str code = p6_1password_cli_item_get_code(item_id, [vault_name=$OP_VAULT_NAME])
+- str key = p6_1password_cli_item_get_api_key(item_id, [vault_name=$OP_VAULT_NAME])
 - str pw = p6_1password_cli_item_get_password(item_id, [vault_name=$OP_VAULT_NAME])
 - str user = p6_1password_cli_item_get_username(item_id, [vault_name=$OP_VAULT_NAME])
 - stream  = p6_1password_cli_item_create(title, username, password, url, [vault_name=$OP_VAULT_NAME])
