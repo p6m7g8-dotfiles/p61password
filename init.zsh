@@ -60,7 +60,7 @@ p6_1password_account_add() {
 #  Args:
 #	OPTIONAL account - [$OP_ACCOUNT]
 #
-#  Environment:	 OP_ACCOUNT OP_SESSION_KEY
+#  Environment:	 OP_ACCOUNT
 #>
 #/ Synopsis:
 #/   1. The account specified with the '--account' flag.
