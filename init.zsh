@@ -112,7 +112,7 @@ p6_1password_whoami() {
 ######################################################################
 p6_1password_whoami_email() {
 
-  local email=$(p6_1password_whoami | awk -F: '/Email/ { print $2}' | awk '{print $1}')
+  local email=$(p6_1password_whoami | p6_filter_row_select "Email" | p6_filter_column_pluck 2 ":" | p6_filter_column_pluck 1)
   p6_env_export OP_EMAIL "$email"
 
   p6_return_str "$email"
@@ -136,4 +136,3 @@ p6_1password_vault_select() {
 
   p6_return_void
 }
-
