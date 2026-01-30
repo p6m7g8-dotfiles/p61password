@@ -128,7 +128,7 @@ p6_1password_cli_item_get_password() {
   local item_id="$1"
   local vault_name="${2:-$OP_VAULT_NAME}"
 
-  local pw=$(p6_1password_cli op item get "$item_id" --vault "$vault_name" --field password --reveal)
+  local pw=$(p6_1password_cli item get "$item_id" --vault "$vault_name" --field password --reveal)
 
   p6_return_str "$pw"
 }
@@ -152,7 +152,7 @@ p6_1password_cli_item_get_api_key() {
   local item_id="$1"
   local vault_name="${2:-$OP_VAULT_NAME}"
 
-  local key=$(p6_1password_cli op item get "$item_id" --vault "$vault_name" --field credential --reveal)
+  local key=$(p6_1password_cli item get "$item_id" --vault "$vault_name" --field credential --reveal)
 
   p6_return_str "$key"
 }
@@ -290,7 +290,7 @@ p6_1password_cli_item_delete() {
   local item_id="$1"
   local vault_name="${2:-$OP_VAULT_NAME}"
 
-  p6_1password_cli op item delete "$item_id" --vault "$vault_name" --yes
+  p6_1password_cli item delete "$item_id" --vault "$vault_name" --yes
 
   p6_return_void
 }
