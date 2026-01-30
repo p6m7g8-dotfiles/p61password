@@ -1,4 +1,27 @@
 # shellcheck shell=bash
+
+######################################################################
+#<
+#
+# Function: stream  = p6_1password_cli(...)
+#
+#  Args:
+#	... - 
+#
+#  Returns:
+#	stream - 
+#
+#>
+######################################################################
+p6_1password_cli() {
+  shift 0
+
+  p6_log "op $*"
+  op "$@"
+
+  p6_return_stream
+}
+
 ######################################################################
 #<
 #
@@ -11,7 +34,7 @@
 ######################################################################
 p6_1password_cli_vaults_list() {
 
-  op vault list
+  p6_1password_cli vault list
 
   p6_return_stream
 }
@@ -33,7 +56,7 @@ p6_1password_cli_vaults_list() {
 p6_1password_cli_vault_list() {
   local vault_name="${1:-$OP_VAULT_NAME}"
 
-  op item list --vault "$vault_name" --include-archive
+  p6_1password_cli item list --vault "$vault_name" --include-archive
 
   p6_return_stream
 }
@@ -57,7 +80,7 @@ p6_1password_cli_item_get() {
   local item_id="$1"
   local vault_name="${2:-$OP_VAULT_NAME}"
 
-  op item get "$item_id" --vault "$vault_name"  --format json
+  p6_1password_cli item get "$item_id" --vault "$vault_name"  --format json
 
   p6_return_stream
 }
@@ -81,7 +104,7 @@ p6_1password_cli_item_get_username() {
   local item_id="$1"
   local vault_name="${2:-$OP_VAULT_NAME}"
 
-  local user=$(op item get "$item_id"  --vault "$vault_name" --field "username")
+  local user=$(p6_1password_cli item get "$item_id"  --vault "$vault_name" --field "username")
 
   p6_return_str "$user"
 }
@@ -105,7 +128,7 @@ p6_1password_cli_item_get_password() {
   local item_id="$1"
   local vault_name="${2:-$OP_VAULT_NAME}"
 
-  local pw=$(op item get "$item_id" --vault "$vault_name" --field password --reveal)
+  local pw=$(p6_1password_cli op item get "$item_id" --vault "$vault_name" --field password --reveal)
 
   p6_return_str "$pw"
 }
@@ -129,7 +152,7 @@ p6_1password_cli_item_get_api_key() {
   local item_id="$1"
   local vault_name="${2:-$OP_VAULT_NAME}"
 
-  local key=$(op item get "$item_id" --vault "$vault_name" --field credential --reveal)
+  local key=$(p6_1password_cli op item get "$item_id" --vault "$vault_name" --field credential --reveal)
 
   p6_return_str "$key"
 }
@@ -153,7 +176,7 @@ p6_1password_cli_item_get_code() {
   local item_id="$1"
   local vault_name="${2:-$OP_VAULT_NAME}"
 
-  local code=$(op item get "$item_id" --vault "$vault_name" --field notesPlain --format json | jq -r '.value')
+  local code=$(p6_1password_cli item get "$item_id" --vault "$vault_name" --field notesPlain --format json | jq -r '.value')
 
   p6_return_str "$code"
 }
@@ -183,7 +206,7 @@ p6_1password_cli_item_create() {
   local url="$4"
   local vault_name="${5:-$OP_VAULT_NAME}"
 
-  op item create \
+  p6_1password_cli item create \
     --format json \
     --category login \
     --vault "$vault_name" \
@@ -220,7 +243,7 @@ p6_1password_cli_item_update() {
   local url="$4"
   local vault_name="${5:-$OP_VAULT_NAME}"
 
-  op item edit "$item_id" \
+  p6_1password_cli item edit "$item_id" \
     --format json \
     --vault "$vault_name" \
     "username=$username" \
@@ -246,7 +269,7 @@ p6_1password_cli_item_archive() {
   local item_id="$1"
   local vault_name="${2:-$OP_VAULT_NAME}"
 
-  op item delete "$item_id" --vault "$vault_name" --archive --yes
+  p6_1password_cli item delete "$item_id" --vault "$vault_name" --archive --yes
 
   p6_return_void
 }
@@ -267,7 +290,7 @@ p6_1password_cli_item_delete() {
   local item_id="$1"
   local vault_name="${2:-$OP_VAULT_NAME}"
 
-  op item delete "$item_id" --vault "$vault_name" --yes
+  p6_1password_cli op item delete "$item_id" --vault "$vault_name" --yes
 
   p6_return_void
 }
