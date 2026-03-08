@@ -2,7 +2,7 @@ name: Enqueue PR to Merge Queue (after CI)
 
 on:
   workflow_run:
-    workflows: ["Codex Code Review"]
+    workflows: ["Build", "Codex Code Review"]
     types: [completed]
 
 jobs:
