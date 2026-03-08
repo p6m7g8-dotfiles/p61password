@@ -9,14 +9,11 @@ on:
       - reopened
       - ready_for_review
       - edited
-  merge_group:
-    types: [checks_requested]
 
 jobs:
   lint:
     name: Lint PR title
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request_target'
     permissions:
       pull-requests: read
     steps:
@@ -24,9 +21,3 @@ jobs:
         uses: p6m7g8-actions/p6-gh-pr-title-linter@main
         with:
           gh_token: ${{ secrets.GITHUB_TOKEN }}
-  lint-merge-group:
-    name: Lint PR title
-    runs-on: ubuntu-latest
-    if: github.event_name == 'merge_group'
-    steps:
-      - run: 'echo "merge_group event: PR title check context satisfied"'
