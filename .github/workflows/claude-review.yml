@@ -2,6 +2,7 @@ name: Claude Code Review
 on:
   pull_request:
     types: [opened, ready_for_review, synchronize]
+  merge_group: {}
 
 permissions:
   contents: read
@@ -11,8 +12,14 @@ permissions:
 jobs:
   claude-review:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.draft == false
+    if: github.event_name == 'pull_request' && github.event.pull_request.draft == false
     steps:
       - uses: p6m7g8-actions/claude@main
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+  claude-review-merge-group:
+    name: claude-review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'merge_group'
+    steps:
+      - run: echo "merge_group event: claude review check context satisfied"
