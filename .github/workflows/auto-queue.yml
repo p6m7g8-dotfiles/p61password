@@ -2,13 +2,14 @@ name: Enqueue PR to Merge Queue (after CI)
 
 on:
   workflow_run:
-    workflows: ["Build"]
+    workflows: ["Codex Code Review"]
     types: [completed]
 
 jobs:
   enqueue:
     runs-on: ubuntu-latest
     name: Enqueue PR to Merge Queue (after CI)
+    if: github.event.workflow_run.conclusion == 'success'
     permissions:
       contents: write
       pull-requests: write
