@@ -2,7 +2,8 @@ name: Claude Code Review
 on:
   pull_request:
     types: [opened, ready_for_review, synchronize]
-  merge_group: {}
+  merge_group:
+    types: [checks_requested]
 
 permissions:
   contents: read

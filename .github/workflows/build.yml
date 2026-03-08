@@ -2,7 +2,8 @@ name: Build
 
 on:
   pull_request: {}
-  merge_group: {}
+  merge_group:
+    types: [checks_requested]
   workflow_dispatch: {}
 
 jobs:
