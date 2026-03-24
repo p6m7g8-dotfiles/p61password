@@ -176,7 +176,7 @@ p6_1password_cli_item_get_code() {
   local item_id="$1"
   local vault_name="${2:-$OP_VAULT_NAME}"
 
-  local code=$(p6_1password_cli item get "$item_id" --vault "$vault_name" --field notesPlain --format json | jq -r '.value')
+  local code=$(p6_1password_cli item get "$item_id" --vault "$vault_name" --field notesPlain --format json | p6_json_eval -r '.value')
 
   p6_return_str "$code"
 }
