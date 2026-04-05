@@ -43,26 +43,21 @@ TODO: Add a short summary of this module.
 
 - `p6_1password_account_add(address, email)`
   - Args:
-    - address -
-    - email -
+    - address
+    - email
 - `p6_1password_account_signin([account=$OP_ACCOUNT])`
-  - Synopsis: 1. The account specified with the '--account' flag. 2. The account specified by the 'OP_ACCOUNT'
-    environment variable. 3. The account you most recently signed in to with 'op signin' in any terminal window. 'op
-    signin' is idempotent. It only prompts for authentication if you aren't already authenticated. 1. The account
-    specified with the '--account' flag. 2. The account specified by the 'OP_ACCOUNT' environment variable. 3. The
-    account you most recently signed in to with 'op signin' in any terminal window. 'op signin' is idempotent. It only
-    prompts for authentication if you aren't already authenticated.
+  - Synopsis: 1. The account specified with the '--account' flag. 2. The account specified by the 'OP_ACCOUNT' environme
   - Args:
     - OPTIONAL account - [$OP_ACCOUNT]
 - `p6_1password_vault_select(vault_name)`
   - Args:
-    - vault_name -
+    - vault_name
 - `p6_1password_whoami()`
 - `p6df::modules::p61password::deps()`
 - `p6df::modules::p61password::init(_module, dir)`
   - Args:
-    - _module -
-    - dir -
+    - _module
+    - dir
 - `str email = p6_1password_whoami_email()`
 
 #### p61password/lib
@@ -71,48 +66,48 @@ TODO: Add a short summary of this module.
 
 - `p6_1password_cli_item_archive(item_id, [vault_name=$OP_VAULT_NAME])`
   - Args:
-    - item_id -
+    - item_id
     - OPTIONAL vault_name - [$OP_VAULT_NAME]
 - `p6_1password_cli_item_delete(item_id, [vault_name=$OP_VAULT_NAME])`
   - Args:
-    - item_id -
+    - item_id
     - OPTIONAL vault_name - [$OP_VAULT_NAME]
 - `str code = p6_1password_cli_item_get_code(item_id, [vault_name=$OP_VAULT_NAME])`
   - Args:
-    - item_id -
+    - item_id
     - OPTIONAL vault_name - [$OP_VAULT_NAME]
 - `str key = p6_1password_cli_item_get_api_key(item_id, [vault_name=$OP_VAULT_NAME])`
   - Args:
-    - item_id -
+    - item_id
     - OPTIONAL vault_name - [$OP_VAULT_NAME]
 - `str pw = p6_1password_cli_item_get_password(item_id, [vault_name=$OP_VAULT_NAME])`
   - Args:
-    - item_id -
+    - item_id
     - OPTIONAL vault_name - [$OP_VAULT_NAME]
 - `str user = p6_1password_cli_item_get_username(item_id, [vault_name=$OP_VAULT_NAME])`
   - Args:
-    - item_id -
+    - item_id
     - OPTIONAL vault_name - [$OP_VAULT_NAME]
 - `stream  = p6_1password_cli(...)`
   - Args:
-    - ... -
+    - ...
 - `stream  = p6_1password_cli_item_create(title, username, password, url, [vault_name=$OP_VAULT_NAME])`
   - Args:
-    - title -
-    - username -
-    - password -
-    - url -
+    - title
+    - username
+    - password
+    - url
     - OPTIONAL vault_name - [$OP_VAULT_NAME]
 - `stream  = p6_1password_cli_item_get(item_id, [vault_name=$OP_VAULT_NAME])`
   - Args:
-    - item_id -
+    - item_id
     - OPTIONAL vault_name - [$OP_VAULT_NAME]
 - `stream  = p6_1password_cli_item_update(item_id, username, password, url, [vault_name=$OP_VAULT_NAME])`
   - Args:
-    - item_id -
-    - username -
-    - password -
-    - url -
+    - item_id
+    - username
+    - password
+    - url
     - OPTIONAL vault_name - [$OP_VAULT_NAME]
 - `stream  = p6_1password_cli_vault_list([vault_name=$OP_VAULT_NAME])`
   - Args:
